@@ -1,0 +1,38 @@
+<% if user_signed_in? %>
+<!--page title-->
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+      <h1>글쓰기</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+    <form action="/post/create" method="post">
+        <div class="form-group">
+            <label for="board_title">제목</label>
+            <input type="text" class="form-control" id="board_title" name="board_title">
+        </div>
+        <div class="form-group">
+            <label>내용</label>
+            <textarea id="board_content" name="board_content"></textarea>
+        </div>
+        <!-- 유져 이름, 이메일 -->
+        <input type="hidden" value="<%= current_user.name %>" name="user_name">
+        <input type="hidden" value="<%= current_user.email %>" name="user_email">
+        <button type="submit" class="btn btn-primary">등록</button>
+        <%= link_to "취소", :back, class: 'btn btn-default active' %>
+    </form>
+  </div>
+</div>
+<% else %>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <p>로그인 후에 사용하실 수 있습니다.</p>
+        <a href="/users/sign_in" class="btn btn-info btn-lg btn-block">로그인</a>
+        <a href="/users/sign_up" class="btn btn-primary btn-lg btn-block">회원가입</a>
+    </div>
+</div>
+<% end %>
+<script>
+    CKEDITOR.replace('board_content');
+</script>

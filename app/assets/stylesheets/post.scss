@@ -1,0 +1,56 @@
+// Place all the styles related to the post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.post_tool_wrapper {
+    padding: 20px 15px;
+    background-color: #f7f7f7;
+}
+
+.comments-header {
+border-bottom: 1px dotted gray;
+margin-bottom: 10px;
+}
+
+.comments-container {
+    p {
+    margin-bottom: 0px;
+    }
+    .comment-nav {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    
+        a {
+        font-size: 10px;
+        font-weight: bold;
+        color: #888;
+        }
+    }
+}
+
+.comment-box {
+    margin-bottom: 20px;
+}
+
+.reply-form {
+display: none;
+}
+
+.comments-show {
+margin-left: 25px;
+}
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list {
+    .media{
+        margin-top: 10px;
+        border-bottom: 1px dotted #ccc;
+    } 
+}
+
+.comment_wrapper{
+    margin-top: 30px;
+}

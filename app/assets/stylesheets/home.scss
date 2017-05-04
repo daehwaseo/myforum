@@ -1,0 +1,21 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+tr.clickable-row:hover{
+    cursor: pointer;
+}
+
+.table-responsive {
+    // height:180px;
+}
+
+a.prev_link {
+    border-radius: 0px !important;
+}
+a.page_link{
+    border-radius: 0px !important;
+}
+a.next_link{
+    border-radius: 0px !important;
+}

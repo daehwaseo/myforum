@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 title_wrapper">
+        <h2><%= @post.title %></h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 content_wrapper">
+        <%= @post.content.html_safe %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 post_tool_wrapper">
+        <a class="btn btn-info btn-xs" href="/">리스트 보기</a>
+        <% if user_signed_in? and current_user.email==@post.edit_user_email %>
+        <div class="btn-group btn-group-xs" role="group" aria-label="...">
+            <a class="btn btn-primary" href="/post/<%= @post.id %>/edit">수정</a>
+            <a class="btn btn-danger" href="/post/<%= @post.id %>/delete" data-confirm="이 게시글을 삭제 하시겠습니까?">삭제</a>
+        </div>
+        <% end %>
+        
+    </div>
+</div>
+
+<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 comment_wrapper">
+    <% if user_signed_in? %>
+    <%= render partial: "comments/template", locals: {commentable: @post, new_comment: @new_comment} %>
+    <% else %>
+    <div class="panel panel-default">
+            <div class="panel-body">
+                댓들을 남기시려면 로그인 해주세요.
+            </div>
+    </div>
+    <% end %>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 comment_wrapper">
+        <div class="comments-list">
+            <%
+            @comments.each do |c|
+                if c.commentable_id == @post.id
+            %>
+            <div class="media">
+                <div class="media-body">
+                    <h4 class="media-heading user_name">
+                        <%
+                        @users.each do |u|
+                            if u.id == c.user_id
+                        %>
+                        <%= u.name %>
+                        <%
+                            end
+                        end
+                        %>
+                    </h4>
+                    <p><%= c.body %></p>
+                </div>
+            </div>
+            <%
+                end
+            end
+            %>
+        </div>
+    </div>
+</div>

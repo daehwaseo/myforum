@@ -1,0 +1,6 @@
+<%= form_for @new_comment do |f| %>
+<%= f.hidden_field :commentable_id, value: @new_comment.commentable_id %>
+<%= f.hidden_field :commentable_type, value: @new_comment.commentable_type %>
+<%= f.text_area :body, class: 'form-control comment-box' %>
+<%= submit_tag "댓글 등록", class: 'btn btn-primary' %>
+<% end %>
